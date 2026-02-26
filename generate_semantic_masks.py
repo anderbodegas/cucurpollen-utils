@@ -1,8 +1,8 @@
 '''
 This script loops over the annotations and generates masks for every image.
-Pixel labels are processed in this order: pollen_tube > germinated_pollen_grain
-> non_germinated_pollen_grain, so minority labels overwrite majority classes in
-case of overlap.
+Pixel labels follow this priority in case of overlap:
+non_germinated_pollen_grain > germinated_pollen_grain > pollen_tube, so
+minority labels overwrite majority classes.
 '''
 
 #-----------------------------------------------------------------------------#
