@@ -14,9 +14,7 @@ These scripts are intended as minimal examples to support reproducibility and si
 
 ### generate_semantic_masks.py
 
-Generates semantic segmentation masks from COCO-format annotation files located in: CucurPollen/annotations.
-
-For each annotated image, a single-channel mask (`.npy`) is created and saved in: CucurPollen/masks
+Generates semantic segmentation masks from COCO-format annotation files located in: CucurPollen/annotations. For each annotated image, a single-channel mask (`.npy`) is created and saved in: CucurPollen/masks.
 
 Pixel values correspond to the following classes:
 
@@ -29,9 +27,7 @@ Pixel values correspond to the following classes:
 
 ### Class priority
 
-In cases of overlapping annotations, pixel labels are assigned using the following priority: pollen_tube > germinated_grain > non_germinated_grain.
-
-This ensures that minority or structurally dominant classes overwrite lower-priority labels during mask construction.
+In cases of overlapping annotations, pixel labels are assigned using the following priority: non_germinated_grain > germinated_grain > pollen_tube, ensuring that minority classes overwrite lower-priority labels during mask construction.
 
 ---
 
@@ -44,24 +40,9 @@ For each image flagged as `annotated = True` in: CucurPollen/metadata/master_ima
 1. Loads the original microscopy image.
 2. Loads the corresponding semantic mask (`.npy`).
 3. Generates a color-coded overlay:
-   - Red   → non_germinated_grain
-   - Green → germinated_grain
-   - Blue  → pollen_tube
+   - Red: non_germinated_grain
+   - Green: germinated_grain
+   - Blue: pollen_tube
 4. Saves the overlay image to: CucurPollen/overlayed/.
 
 This allows rapid qualitative inspection of annotation consistency.
-
----
-
-## Requirements
-
-- Python 3.8+
-- numpy
-- pandas
-- opencv-python
-- pycocotools
-
-Install dependencies with:
-
-```bash
-pip install -r requirements.txt
