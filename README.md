@@ -25,8 +25,6 @@ Pixel values correspond to the following classes:
 | 2          | germinated_grain            |
 | 3          | pollen_tube                 |
 
-### Class priority
-
 In cases of overlapping annotations, pixel labels are assigned using the following priority: non_germinated_grain > germinated_grain > pollen_tube, ensuring that minority classes overwrite lower-priority labels during mask construction.
 
 ---
