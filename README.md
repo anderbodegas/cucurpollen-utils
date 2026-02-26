@@ -42,3 +42,15 @@ For each image flagged as `annotated = True` in: CucurPollen/metadata/master_ima
 4. Saves the overlay image to: CucurPollen/overlayed/.
 
 This allows rapid qualitative inspection of annotation consistency.
+
+---
+
+## Dataset
+
+The complete CucurPollen dataset is publicly available in the Zenodo repository under DOI: 10.5281/zenodo.18736035
+
+---
+
+## Citation
+
+If you use the CucurPollen dataset or these utilities in your research, please cite:
