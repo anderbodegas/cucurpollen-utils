@@ -2,7 +2,7 @@
 
 Utility scripts for generating and visualizing semantic segmentation masks from the CucurPollen dataset.
 
-![Annotation Example](fig.png)
+![Annotation Example](figure.png)
 
 ## Overview
 
