@@ -28,6 +28,8 @@ master_image = master_image[master_image['annotated']]
 # Loop over annotated images and generate overlayed images
 for image_name, image_path in zip(master_image['name'], master_image['path']):
 
+    print(f'Processing: {image_name}')
+
     # Read image and mask
     image = cv2.imread(image_path, flags = cv2.IMREAD_UNCHANGED)
     mask = np.load(f'{masks_folder}/{image_name}.npy')
