@@ -2,6 +2,8 @@
 
 Utility scripts for generating and visualizing semantic segmentation masks from the CucurPollen dataset.
 
+![Annotation Example](fig.png)
+
 ## Overview
 
 This repository provides reference scripts to facilitate the use of the CucurPollen microscopy dataset. The tools convert COCO-format instance annotations into semantic segmentation masks and generate visualization overlays for inspection.
