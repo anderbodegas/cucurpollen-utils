@@ -73,8 +73,8 @@ Contains some functions and classes needed in the other scripts.
 
 ## Dataset
 
-The complete CucurPollen dataset is publicly available in the Zenodo repository under DOI:  
-**10.5281/zenodo.18736035**
+The complete CucurPollen dataset is publicly available in the Zenodo repository under DOI: **10.5281/zenodo.18736035**
+
 ---
 
 ## Citation
