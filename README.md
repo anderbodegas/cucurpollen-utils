@@ -28,52 +28,85 @@ For each annotated image, a single-channel mask (`.npy`) is created and saved in
 Pixel values correspond to the following classes:
 
 | Label value | Class name           |
-|------------|----------------------|
-| 0          | background           |
-| 1          | non_germinated_grain |
-| 2          | germinated_grain     |
-| 3          | pollen_tube          |
+|-------------|----------------------|
+| 0           | background           |
+| 1           | non_germinated_grain |
+| 2           | germinated_grain     |
+| 3           | pollen_tube          |
 
 In cases of overlapping annotations, pixel labels are assigned using the following priority: non_germinated_grain > germinated_grain > pollen_tube, ensuring that minority classes overwrite lower-priority labels during mask construction.
-
 
 This ensures that higher-priority classes overwrite lower-priority labels during mask construction.
 
 ---
 
-### `generate_semantic_masks.py`
-
-Loops over the annotations and generates masks for every image.
-
----
-
 ### `visualize_semantic_masks.py`
 
-Loops over the annotated images and creates an overlayed image with its mask.
+Creates overlay visualizations for annotated images.
+
+For each image flagged as `annotated = True` in: `CucurPollen/metadata/master_image.csv`, the script:
+
+1. Loads the original microscopy image
+2. Loads the corresponding semantic mask (`.npy`)
+3. Generates a color-coded overlay:
+   - Red: non_germinated_grain
+   - Green: germinated_grain
+   - Blue: pollen_tube
+4. Saves the overlay image to: `CucurPollen/overlayed/`
+
+This allows rapid qualitative inspection of annotation consistency.
 
 ---
 
 ### `generate_patched_dataset.py`
 
-Loops over the annotated images, preprocesses them, and generates a ready-to-use dataset of patches with the selected patch size.
+Creates a ready-to-use dataset of patches with the selected patch size.
+
+For each image flagged as `annotated = True` in: `CucurPollen/metadata/master_image.csv`, the script:
+
+1. Loads the original microscopy image
+2. Loads the corresponding semantic mask (`.npy`)  
+3. Resizes the image and the mask to the nearest dimensions divisible by the selected patch size.
+4. Divides the resized image and mask into patches of the selected patch size.
+5. Saves the generated patch to: `CucurPollen/dataset/`
+
+Test images are not patched so test metrics can be calculated at the full image level.
 
 ---
 
 ### `train_models.py`
 
-Minimal training example using the patched CucurPollen dataset. A set of baseline models can be selected using the SMP package, including U-Net, U-Net++, Deeplabv3, Deeplabv3+, Segformer, etc. A patience criterion based on the validation loss is used to prevent overfitting and save time.
+Minimal training example using the patched CucurPollen dataset. A set of baseline models can be selected using the SMP package, including U-Net, U-Net++, Deeplabv3, Deeplabv3+, Segformer, etc.
+
+The script:
+
+1. Creates datasets and dataloaders.
+2. Randomly initializes models.
+3. Performs training and validation loops.
+4. Saves logs and best and last checkpoint to `checkpoints/{model_name}`.
+   
+A patience criterion based on the validation loss is used to prevent overfitting and save time.
 
 ---
 
 ### `test_models.py`
 
-Tests the models trained with `train_models.py` on the test dataset. It also generates figures to illustrate model predictions.
+Evaluates trained models on the test subset at the full image level.
+
+The script:
+
+1. Loads, preprocesses and patches the test images as in `generate_patched_dataset`.
+2. Predicts each patch with the selected trained model.
+3. Reconstructs full predicted masks.
+4. Calculates test metrics at the full image level.
+5. Illustrates predictions and saves the plots to `test/{model_name}`.
+6. Saves metrics to `test/test_metrics.xlsx`.
 
 ---
 
 ### `utils.py`
 
-Contains some functions and classes needed in the other scripts.
+Contains shared utility functions used across scripts.
 
 ---
 
