@@ -11,6 +11,7 @@ generated inside the 'test' folder containing the test metrics.
 #-----------------------------------------------------------------------------#
 
 from torchmetrics.classification import MulticlassConfusionMatrix
+from matplotlib.colors import ListedColormap
 from utils import (
     transforms,
     initialize_models,
@@ -36,6 +37,9 @@ test_metrics = {
     'iou_pt': list(),
     'miou': list()
 }
+
+# Create color map to visualize model segmentation
+color_map = ListedColormap(['black', 'red', 'yellow', 'blue'])
 
 # Options
 model_name = 'unet'
@@ -124,10 +128,10 @@ for image_name in os.listdir(f'{dataset_folder}/test/images'):
     ax[0].imshow(image, cmap = 'gray')
     ax[0].set_title('Image')
     ax[0].set_axis_off()
-    ax[1].imshow(mask, cmap = 'cividis')
+    ax[1].imshow(mask, cmap = color_map, interpolation = 'nearest')
     ax[1].set_title('GT')
     ax[1].set_axis_off()
-    ax[2].imshow(preds, cmap = 'cividis')
+    ax[2].imshow(preds, cmap = color_map, interpolation = 'nearest')
     ax[2].set_title('Prediction')
     ax[2].set_axis_off()
     
