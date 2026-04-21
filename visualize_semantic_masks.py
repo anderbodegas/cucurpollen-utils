@@ -1,6 +1,9 @@
 '''
 This script loops over the annotated images and creates an overlayed image with
 its mask.
+
+A folder named 'overlayed' is created inside the CucurPollen folder to store
+the generated overlays
 '''
 
 #-----------------------------------------------------------------------------#

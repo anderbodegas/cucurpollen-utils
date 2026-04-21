@@ -1,5 +1,9 @@
 '''
 This script loops over the annotations and generates masks for every image.
+
+A folder named 'masks' is created inside the CucurPollen folder to store the
+generated masks
+
 Pixel labels follow this priority in case of overlap:
 non_germinated_pollen_grain > germinated_pollen_grain > pollen_tube, so
 minority labels overwrite majority classes.
@@ -7,12 +11,11 @@ minority labels overwrite majority classes.
 
 #-----------------------------------------------------------------------------#
 
+from pycocotools import mask as mask_utils
+
 import os
-import pandas as pd
 import json
 import numpy as np
-
-from pycocotools import mask as mask_utils
 
 #-----------------------------------------------------------------------------#
 
