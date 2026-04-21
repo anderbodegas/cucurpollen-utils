@@ -52,7 +52,7 @@ For each image flagged as `annotated = True` in: `CucurPollen/metadata/master_im
    - Red: non_germinated_grain
    - Green: germinated_grain
    - Blue: pollen_tube
-4. Saves the overlay image to: `CucurPollen/overlayed/`
+4. Saves the overlay image to: `CucurPollen/overlayed`
 
 This allows rapid qualitative inspection of annotation consistency.
 
@@ -68,7 +68,7 @@ For each image flagged as `annotated = True` in: `CucurPollen/metadata/master_im
 2. Loads the corresponding semantic mask (`.npy`)  
 3. Resizes the image and the mask to the nearest dimensions divisible by the selected patch size.
 4. Divides the resized image and mask into patches of the selected patch size.
-5. Saves the generated patch to: `CucurPollen/dataset/`
+5. Saves the generated patches to: `CucurPollen/dataset`
 
 Test images are not patched so test metrics can be calculated at the full image level.
 
