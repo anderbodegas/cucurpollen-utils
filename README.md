@@ -41,6 +41,18 @@ This ensures that higher-priority classes overwrite lower-priority labels during
 
 ---
 
+### `generate_semantic_masks.py`
+
+Loops over the annotations and generates masks for every image.
+
+---
+
+### `visualize_semantic_masks.py`
+
+Loops over the annotated images and creates an overlayed image with its mask.
+
+---
+
 ### `generate_patched_dataset.py`
 
 Loops over the annotated images, preprocesses them, and generates a ready-to-use dataset of patches with the selected patch size.
@@ -56,12 +68,6 @@ Minimal training example using the patched CucurPollen dataset. A set of baselin
 ### `test_models.py`
 
 Tests the models trained with `train_models.py` on the test dataset. It also generates figures to illustrate model predictions.
-
----
-
-### `visualize_semantic_masks.py`
-
-Loops over the annotated images and creates an overlayed image with its mask.
 
 ---
 
