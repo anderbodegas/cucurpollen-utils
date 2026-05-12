@@ -116,7 +116,7 @@ for image_name in os.listdir(f'{dataset_folder}/test/images'):
         position_list = position_list,
         shape_resized = shape_resized,
         shape_original = image.shape,
-        interpolation = None
+        interpolation = 'nearest'
     )
 
     # Normalize image
