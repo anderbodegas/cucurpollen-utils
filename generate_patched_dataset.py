@@ -143,7 +143,7 @@ for image_name, image_path in zip(master_image['name'], master_image['path']):
     patch_mask_list, position_mask_list, shape_resized = patchify(
         array = mask,
         patch_size = patch_size,
-        interpolation = 'linear'
+        interpolation = 'nearest'
     )
 
     # Loop over patches
