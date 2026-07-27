@@ -31,11 +31,10 @@ import matplotlib.pyplot as plt
 # Get metrics header
 test_metrics = {
     'model_name': list(),
-    'iou_bg': list(),
-    'iou_ng': list(),
-    'iou_gg': list(),
-    'iou_pt': list(),
-    'miou': list()
+    'fiou': list(),
+    'fdice': list(),
+    'fprec': list(),
+    'frecall': list()
 }
 
 # Create color map to visualize model segmentation
@@ -157,11 +156,10 @@ with torch.no_grad():
 
 # Update test metrics
 test_metrics['model_name'].append(model_name)
-test_metrics['iou_bg'].append(iou[0].item())
-test_metrics['iou_ng'].append(iou[1].item())
-test_metrics['iou_gg'].append(iou[2].item())
-test_metrics['iou_pt'].append(iou[3].item())
-test_metrics['miou'].append(iou[1:].mean().item())
+test_metrics['fiou'].append(iou[1:].mean().item())
+test_metrics['fdice'].append(dice[1:].mean().item())
+test_metrics['fprec'].append(prec[1:].mean().item())
+test_metrics['frecall'].append(recall[1:].mean().item())
 
 # Convert into dataframe and save
 test_metrics = pd.DataFrame(test_metrics)
