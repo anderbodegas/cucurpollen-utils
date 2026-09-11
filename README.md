@@ -112,7 +112,7 @@ Contains shared utility functions used across scripts.
 
 ## Dataset
 
-The complete CucurPollen dataset is publicly available in the Zenodo repository under DOI: **10.5281/zenodo.18736035**
+The complete CucurPollen dataset is publicly available in the Zenodo repository under DOI: **10.5281/zenodo.21794641**
 
 ---
 
