@@ -117,3 +117,5 @@ The complete CucurPollen dataset is publicly available in the Zenodo repository 
 ---
 
 ## Citation
+
+Bodegas-Díez, A., Flores-León, A., Campos, G. et al. Microscopic images of pollen germination under natural heat stress in four cucurbit species. Sci Data (2026). https://doi.org/10.1038/s41597-026-08333-6
